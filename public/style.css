@@ -1,0 +1,52 @@
+:root {
+  --card-size: 100px; /* Size of the cards */
+  --gap: 10px; /* Space between cards */
+  --board-grid: 4; /* Adjust if you have a different grid size */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #ffffff;
+}
+
+.score-board,
+#startGame {
+  text-align: center;
+  margin: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-grid), var(--card-size));
+  grid-gap: var(--gap);
+  padding: var(--gap);
+}
+
+.card {
+  width: var(--card-size);
+  height: var(--card-size);
+  background-color: #009688; /* Fallback color */
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 8px; /* Optional: adds rounded corners to the cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow to the cards */
+  transition: transform 1s, opacity 0.5s; /* Smooth transformation on flip */
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarges the card on hover */
+}
+
+.card.flipped,
+.card.matched {
+  background-color: #fff; /* Background color for flipped or matched cards */
+  transform: rotateY(180deg);
+}
